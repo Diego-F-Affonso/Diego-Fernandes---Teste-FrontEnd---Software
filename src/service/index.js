@@ -5,12 +5,15 @@
 
 // https://crudcrud.com/api/2f67d6414ef24dd9a9c03c03306fc608/stock
 
-export const registerProduct = (product) => {
-  fetch('https://crudcrud.com/api/2f67d6414ef24dd9a9c03c03306fc608/stock', {
-    headers: { 'Content-Type': 'application/json; charset=utf-8' },
-    method: 'POST',
-    body: JSON.stringify(product),
-  })
+export const registerProduct = async (product) => {
+  await fetch(
+    'https://crudcrud.com/api/2f67d6414ef24dd9a9c03c03306fc608/stock',
+    {
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      method: 'POST',
+      body: JSON.stringify(product),
+    },
+  )
     .then((response) => response.json())
     .then((data) => console.log(data));
 };
