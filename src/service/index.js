@@ -5,7 +5,7 @@
 
 // https://crudcrud.com/api/2f67d6414ef24dd9a9c03c03306fc608/stock
 
-const registerProduct = (product) => {
+export const registerProduct = (product) => {
   fetch('https://crudcrud.com/api/2f67d6414ef24dd9a9c03c03306fc608/stock', {
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
     method: 'POST',
@@ -15,4 +15,34 @@ const registerProduct = (product) => {
     .then((data) => console.log(data));
 };
 
-export default registerProduct;
+export const getAllProducts = () => {
+  fetch('https://crudcrud.com/api/2f67d6414ef24dd9a9c03c03306fc608/stock')
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+};
+
+export const getProductById = (id) => {
+  fetch(`https://crudcrud.com/api/2f67d6414ef24dd9a9c03c03306fc608/stock/${id}`)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+};
+
+export const updateProduct = (id, productAltered) => {
+  fetch(
+    `https://crudcrud.com/api/2f67d6414ef24dd9a9c03c03306fc608/stock/${id}`,
+    {
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      method: 'PUT',
+      body: JSON.stringify(productAltered),
+    },
+  ).then((response) => console.log(response));
+};
+
+export const deleteProduct = (id) => {
+  fetch(
+    `https://crudcrud.com/api/2f67d6414ef24dd9a9c03c03306fc608/stock/${id}`,
+    {
+      method: 'DELETE',
+    },
+  ).then((response) => console.log(response));
+};
