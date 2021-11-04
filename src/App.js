@@ -1,10 +1,14 @@
+import { Routes, Route } from 'react-router-dom';
 import React from 'react';
+import Main from './pages/main';
+import Forms from './pages/forms/index';
 
 function App() {
   return (
-    <>
-      <h1>Tela Principal</h1>
-    </>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="forms" element={<Forms />} />
+    </Routes>
   );
 }
 
