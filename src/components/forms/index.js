@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import ProductsContext from '../../context/productsContext';
-// import { registerProduct } from '../../service/index';
+import { registerProduct } from '../../service/index';
 
 const Form = () => {
   const { newProduct, setNewProduct } = useContext(ProductsContext);
@@ -16,6 +16,7 @@ const Form = () => {
           onChange={({ target }) => {
             setNewProduct({ ...newProduct, quantity: target.value });
           }}
+          required
         />
       </label>
       <label htmlFor="price">
@@ -27,6 +28,7 @@ const Form = () => {
           onChange={({ target }) => {
             setNewProduct({ ...newProduct, price: target.value });
           }}
+          required
         />
       </label>
       <label htmlFor="product">
@@ -43,6 +45,7 @@ const Form = () => {
               product: { ...newProduct.product, nameProduct: target.value },
             });
           }}
+          required
         />
         Category:
         <input
@@ -56,6 +59,7 @@ const Form = () => {
               product: { ...newProduct.product, category: target.value },
             });
           }}
+          required
         />
       </label>
       <label htmlFor="client">
@@ -71,6 +75,7 @@ const Form = () => {
               client: { ...newProduct.client, name: target.value },
             });
           }}
+          required
         />
         Company:
         <input
@@ -83,6 +88,7 @@ const Form = () => {
               client: { ...newProduct.client, company: target.value },
             });
           }}
+          required
         />
       </label>
       <label htmlFor="active">
@@ -95,6 +101,7 @@ const Form = () => {
           onChange={({ target }) => {
             setNewProduct({ ...newProduct, active: target.value });
           }}
+          required
         />{' '}
         True
         <input
@@ -105,15 +112,15 @@ const Form = () => {
           onChange={({ target }) => {
             setNewProduct({ ...newProduct, active: target.value });
           }}
+          required
         />{' '}
         False
       </label>
       <input
         type="submit"
         value="Enviar"
-        onClick={() => {
-          // registerProduct(newProduct); fetch funcionando, faltando implementar validação de todos os campos
-          console.log('fiz o fetch');
+        onSubmit={() => {
+          registerProduct(newProduct);
         }}
       />
     </form>
